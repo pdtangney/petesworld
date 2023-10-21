@@ -1,0 +1,13 @@
+{% extends "classifieds/base.html" %}
+
+{% block content %}
+<p>Categories</p>
+
+<ul>
+	{% for category in categories %}
+	<li><a href="{% url 'classifieds:category' category.id %}">{{category}}</a></li>
+	{% empty %}
+	<li>No categories exist yet.</li>
+	{% endfor %}
+</ul>
+{% endblock content %}

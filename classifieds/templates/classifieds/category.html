@@ -1,0 +1,16 @@
+{% extends 'classifieds/base.html' %}
+{% block content %}
+<p>Category: {{category}}</p>
+<p>Ads:</p>
+<ul>
+	{% for ad in entries %}
+	<li>
+		<p>{{ad.headline}}</p>
+		<p>{{ad.date_added|date:'M d, Y H:i'}}</p>
+		<!-- <p>{{ad.body|linebreaks}}</p> --!>
+	</li>
+	{% empty %}
+	<li>There are currently no ads in {{category}}.</li>
+	{% endfor %}
+</ul>
+{% endblock content %}
