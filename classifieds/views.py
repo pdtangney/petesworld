@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Category, ClassifiedAd
+from .forms import ClassifiedAdForm
+
 
 def index(request):
     """The homepage for classifieds."""
@@ -22,3 +24,17 @@ def category(request, category_id):
     context = {'category':category, 'entries':entries,
                'title':f'Classifieds - {category}'}
     return render(request, 'classifieds/category.html', context)
+
+def new_ad(request):
+    """Add a new ad."""
+    if request.method != 'POST':
+        # Create a blank form
+        form = ClassifiedAdForm()
+    else:
+        # process data
+        form = ClassifiedAdForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('classifieds:categories')
+    context = {'form':form}
+    return render(request, 'classifieds/new_ad.html', context)

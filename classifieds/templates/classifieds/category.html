@@ -6,8 +6,10 @@
 	{% for ad in entries %}
 	<li>
 		<p>{{ad.headline}}</p>
+		<blockquote>
+			<p>{{ad.body|linebreaks}}</p>
+		</blockquote>
 		<p>{{ad.date_added|date:'M d, Y H:i'}}</p>
-		<!-- <p>{{ad.body|linebreaks}}</p> --!>
 	</li>
 	{% empty %}
 	<li>There are currently no ads in {{category}}.</li>

@@ -1,0 +1,9 @@
+{% extends "classifieds/base.html" %}
+{% block content %}
+<p>Create new Ad:</p>
+<form action="{% url 'classifieds:new_ad' %}" method='post'>
+	{% csrf_token %}
+	{{form.as_p}}
+	<button name="submit">Create Ad</button>
+</form>
+{% endblock content %}
