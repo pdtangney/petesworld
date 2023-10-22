@@ -1,0 +1,9 @@
+{% extends 'classifieds/base.html' %}
+{% block content %}
+<h1>{{headline}}</h1>
+<b>{{category}}</b>
+<p>{{body|wordwrap:100|linebreaks}}</p>
+<p>{{email}}</p>
+<p>{{date}}</p>
+{% endblock content %}
+

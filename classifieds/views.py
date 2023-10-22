@@ -38,3 +38,16 @@ def new_ad(request):
             return redirect('classifieds:categories')
     context = {'form':form}
     return render(request, 'classifieds/new_ad.html', context)
+
+def individual_ad(request, ad_id):
+    """View an individual ad on it's own page."""
+    ad = ClassifiedAd.objects.get(id=ad_id)
+    category = ad.category
+    headline = ad.headline
+    body = ad.body
+    email = ad.email
+    date = ad.date_added
+    context = {'category': category, 'headline': headline, 'body':body,
+               'email': email, 'date':date,
+    'title': f'Classifieds - {category} - {headline}' }
+    return render(request, 'classifieds/individual_ad.html', context)

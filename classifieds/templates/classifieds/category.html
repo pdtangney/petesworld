@@ -5,9 +5,9 @@
 <ul>
 	{% for ad in entries %}
 	<li>
-		<p>{{ad.headline}}</p>
+		<a href="{% url 'classifieds:individual_ad' ad.id %}"><p>{{ad.headline}}</a></p>
 		<blockquote>
-			<p>{{ad.body|linebreaks}}</p>
+			<p>{{ad.body|slice:":50"}}...</p>
 		</blockquote>
 		<p>{{ad.date_added|date:'M d, Y H:i'}}</p>
 	</li>
