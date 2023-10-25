@@ -1,0 +1,12 @@
+{% extends "homepage/base.html" %}
+{% block title %}Discussions - Topics{% endblock title %}
+{% block content %}
+<p>Topics</p>
+<ul>
+	{% for topic in topics %}
+	<li>{{topic}}</li>
+	{% empty %}
+	<li>No topics have been added yet.</li>
+	{% endfor %}
+</ul>
+{% endblock content %}

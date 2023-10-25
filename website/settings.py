@@ -33,8 +33,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # My apps
-    'hello_world',
     'classifieds',
+    'discussions',
+    'homepage',
 
     # Default Django apps
     'django.contrib.admin',

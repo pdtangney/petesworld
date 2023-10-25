@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,
+		initial-scale=1.0">
+		<title>{% block title %}{% endblock %}</title>
+	</head>
+	<body>
+<p>
+<br><a href="{% url 'homepage:index' %}">Home Page</a>
+<br><a href="{% url 'discussions:index' %}">Discussions</a>
+<br><a href="{% url 'admin:index' %}">Admin Panel</a>
+</p>
+
+{% block content %} {% endblock content %}
+	</body>
+</html>
