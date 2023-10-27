@@ -17,7 +17,8 @@ def categories(request):
     all_categories = Category.objects.order_by('category')
     # {key:val} where key is the name used in the template, val is the data
     # we're sending to the template!
-    context = {'categories': all_categories, 'title': 'Classifieds - Categories'}
+    context = {'categories': all_categories,
+               'title': 'Classifieds - Categories'}
     return render(request, 'classifieds/categories.html', context)
 
 
@@ -47,13 +48,8 @@ def new_ad(request):
 
 def individual_ad(request, ad_id):
     """View an individual ad on it's own page."""
-    ad_obj= ClassifiedAd.objects.get(id=ad_id)
-    ad_category = ad_obj.category
-    headline = ad_obj.headline
-    body = ad_obj.body
-    email = ad_obj.email
-    date = ad_obj.date_added
-    context = {'category': category, 'headline': headline, 'body': body,
-               'email': email, 'date': date,
-               'title': f'Classifieds - {ad_category} - {headline}'}
+    obj = ClassifiedAd.objects.get(id=ad_id)
+    context = {'category': obj.category, 'headline': obj.headline,
+               'body': obj.body, 'email': obj.email, 'date': obj.date_added,
+               'title': f'Classifieds - {obj.category} - {obj.headline}'}
     return render(request, 'classifieds/individual_ad.html', context)
